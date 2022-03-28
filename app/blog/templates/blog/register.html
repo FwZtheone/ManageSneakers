@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+{% block register %}
+<div class="container register ">
+    <form action="{% url 'blog:register'  %}" method="POST">
+        {% csrf_token %}
+        <div>
+            <h1>Register form</h1>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Name</label>
+            {{form.name}} </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Last Name</label>
+            {{form.lastname}}
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email</label>
+            {{form.email}}
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Password</label>
+            {{form.password}}
+        </div>
+        <div class="">
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+        </div>
+    </form>
+</div>
+
+{% endblock register %}
