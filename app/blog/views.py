@@ -9,6 +9,9 @@ from django.contrib.messages import get_messages
 from django.contrib.auth import authenticate
 
 
+def home(request):
+    return render(request,'blog/index.html')
+
 def detail(request,blog_id):
     blog = Blog.objects.get(id=blog_id)
     
