@@ -3,6 +3,10 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import Blog,Author
 from django.shortcuts import render
 from .forms.register.RegisterForm import RegisterForm
+from django.db import IntegrityError
+from django.contrib import messages
+from django.contrib.messages import get_messages
+from django.contrib.auth import authenticate
 
 
 def detail(request,blog_id):
@@ -21,9 +25,18 @@ def register(request):
     if request.method == 'POST':
         # context = user authenticate
         form = RegisterForm(request.POST)
+        storage = get_messages(request)
         if form.is_valid():
-            print("ici")
-            return HttpResponseRedirect('/blog/')
+            user = Author(name=form.cleaned_data['name'],lastname=form.cleaned_data['lastname'],email=form.cleaned_data['email'],password=form.cleaned_data['password'])
+            try:
+                user.save()
+                user_auth = authenticate(email=user.email,password=user.password)
+                messages.success(request,'account created succesful')
+                
+
+            except:
+                messages.warning(request, 'email already taken')
+
     else:
         form  = RegisterForm()
     return render(request,'blog/register.html',{'form':form})

@@ -30,7 +30,20 @@
             </button>
         </nav>
     </div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
 
+        <div class="alert  {% if message.tags == "warning"  %} alert-danger  {% else %} alert-success {% endif %}  alert-dismissible fade show"
+            role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    </ul>
+    {% endif %}
     {% block home %}{% endblock home %}
 
     {% block register %}{% endblock register %}
