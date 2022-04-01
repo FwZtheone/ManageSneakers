@@ -45,7 +45,7 @@
         </li>
 
         {% if user.is_authenticated %}
-
+        <li class="nav-item"><a href="{% url 'blog:profile'%}" class="nav-link">Profile</a></li>
         <li class="nav-item text-right">
           <a href="{% url 'admin:logout' %}" class="nav-link text-danger text-bold">Logout</a>
         </li>
@@ -74,12 +74,10 @@
   {% block register %}{% endblock register %}
   {% block profile %}{% endblock profile %}
   {% block presentation %}{% endblock presentation %}
-
+  {% block list_shoes %}{% endblock list_shoes %}
 
   {% if not user.is_authenticated %}
   {% block login %}{% endblock login %}
-
-
   {% endif %}
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">

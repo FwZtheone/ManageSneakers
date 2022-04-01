@@ -1,5 +1,5 @@
 from django.contrib import admin
-from  .models import Blog, Author 
+from  .models import Shoes 
 # Register your models here.
 
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
@@ -8,8 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from .models import User
 
 
-admin.site.register(Blog)
-admin.site.register(Author)
+admin.site.register(Shoes)
 """Integrate with admin module."""
 
 @admin.register(User)

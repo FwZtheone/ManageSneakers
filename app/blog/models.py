@@ -2,22 +2,7 @@ from enum import unique
 from django.db import models
 from django.contrib.auth.models import AbstractUser,BaseUserManager
 from django.utils.translation import ugettext_lazy as _
-# Create your models here.
 
-
-
-class Author(models.Model):
-    name = models.CharField(max_length=255)
-    lastname = models.CharField(max_length=255)
-    email = models.EmailField(max_length=255,unique=True)
-    password = models.CharField(max_length=255)
-
-class Blog(models.Model):
-    title = models.CharField(max_length=255)
-    text = models.CharField(max_length=255)
-    picture = models.ImageField( default="test")
-    author_id =models.ForeignKey(Author,on_delete=models.CASCADE)
-    
 class UserManager(BaseUserManager):
     """Define a model manager for User model with no username field."""
 
@@ -51,6 +36,7 @@ class UserManager(BaseUserManager):
 
         return self._create_user(email, password, **extra_fields)
         
+
 class User(AbstractUser):
     """user name model"""
     username = None
@@ -58,3 +44,19 @@ class User(AbstractUser):
     USERNAME_FIELD ='email'
     REQUIRED_FIELDS=[]
     objects = UserManager()
+
+
+class Shoes(models.Model):
+    name = models.CharField(max_length=255)
+    size = models.FloatField()
+    color = models.CharField(max_length=255)
+    price = models.FloatField()
+    price_bought = models.FloatField()
+    price_selled = models.FloatField() 
+    date_received = models.DateTimeField()
+    date_selled = models.DateTimeField()
+    quantity = models.IntegerField()
+    damaged = models.BooleanField()
+    selled = models.BooleanField()
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+

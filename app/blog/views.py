@@ -1,6 +1,7 @@
+import email
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Blog,Author
+from .models import Shoes, User
 from django.shortcuts import render
 from django.db import IntegrityError
 from django.contrib import messages
@@ -13,17 +14,11 @@ from .forms.RegisterForm import RegisterForm
 def home(request):
     return render(request,'blog/index.html')
 
-def detail(request,blog_id):
-    blog = Blog.objects.get(id=blog_id)
-    
-    return render(request,'blog/index.html',context={'one_article': blog})
 
-def index(request):
-    list_blog = Blog.objects.all()
-    print(list_blog[0].picture.url)
-    context = {'list_blog' : list_blog}
+@login_required
+def list_shoes(request):
     
-    return render(request,'blog/index.html',context)
+    return render(request,'blog/list_shoes.html')
 
 
 @login_required
@@ -39,9 +34,10 @@ def register(request):
             form = RegisterForm(request.POST)
             storage = get_messages(request)
             if form.is_valid():
-                user = Author(name=form.cleaned_data['name'],lastname=form.cleaned_data['lastname'],email=form.cleaned_data['email'],password=form.cleaned_data['password'])
+                user = User(email=form.cleaned_data['email'],password=form.cleaned_data['password'])
+                print(user)
                 try:
-                    # user.save()
+                    user.save()
                     login(request,user)
                     messages.success(request,'account created succesful')
                     return redirect('/profile/')
