@@ -1,0 +1,70 @@
+{% extends 'blog/base.html' %}
+{% block shoes %}
+
+<form action="" class="container bg-gray  d-flex flex-row  mt-5">
+    {% csrf_token %}
+    <div class="container">
+        <div class="form-group ">
+            <label for=" name" class="form-label">Name : </label>
+            {{form.name}}
+        </div>
+        <div class="form-group">
+            <label for="size" class="form-label">Size : </label>
+            {{form.size}}
+        </div>
+        <div class="form-group">
+            <label for="price" class="form-label">Price : </label>
+            {{form.price}}
+        </div>
+        <div class="form-group">
+            <label for="color" class="form-label">Color : </label>
+            {{form.color}}
+        </div>
+        <div class="form-group">
+            <label for="price_bought" class="form-label">Price bought : </label>
+            {{form.price_bought}}
+        </div>
+        <div class="form-group">
+            <label for="price_selled" class="form-label">Price selled : </label>
+            {{form.price_selled}}
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary">
+        </div>
+    </div>
+    <div>
+
+        <div class="form-group">
+            <label for="date_received" class="form-label">Date received : </label>
+            {{form.date_received}}
+        </div>
+        <div class="form-group">
+            <label for="date_selled" class="form-label">Date selled : </label>
+            {{form.date_selled}}
+        </div>
+        <div class="form-group">
+            <label for="quantity" class="form-label">Quantity : </label>
+            {{form.quantity}}
+        </div>
+        <div class="form-check">
+            {{form.damaged}}
+
+            <label for="damaged" class="form-check-label">Damaged</label>
+        </div>
+        <div class="form-check">
+            {{form.selled}}
+
+            <label for="selled" class="form-check-label">Selled</label>
+
+        </div>
+    </div>
+
+
+
+
+</form>
+
+
+
+{% endblock shoes %}
