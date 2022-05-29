@@ -6,29 +6,38 @@
     <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
+            <th scope="col">Name</th>
+            <th scope="col">Size</th>
+            <th scope="col">Sale price</th>
+            <th scope="col">Color</th>
+            <th scope="col">Price bought</th>
+            <th scope="col">Price selled</th>
+            <th scope="col">Date received</th>
+            <th scope="col">Date selled</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Damaged</th>
+            <th scope="col">Selled</th>
+
+
     </thead>
     <tbody>
+        {%for item in shoes%}
         <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <th scope="row">{{item.id}}</th>
+            <td>{{item.name}}</td>
+            <td>{{item.size}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.color}}</td>
+            <td>{{item.price_bought}}</td>
+            <td>{{item.price_selled}}</td>
+            <td>{{item.date_received}}</td>
+            <td>{{item.date_selled}}</td>
+            <td>{{item.quantity}}</td>
+            <td>{{item.damaged}}</td>
+            <td>{{item.selled}}</td>
         </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-        </tr>
+        {%endfor%}
+
     </tbody>
 </table>
 

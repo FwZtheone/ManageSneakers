@@ -11,14 +11,19 @@ from django.contrib.auth.decorators  import login_required
 from django.shortcuts import redirect
 from .forms.RegisterForm import RegisterForm
 from .forms.ShoesForm import ShoesForm
+
+
+
+
 def home(request):
     return render(request,'blog/index.html')
 
 
 @login_required
 def list_shoes(request):
-    
-    return render(request,'blog/list_shoes.html')
+    data = Shoes.objects.all()
+
+    return render(request,'blog/list_shoes.html', {'shoes':data})
 
 
 @login_required
@@ -32,7 +37,6 @@ def register(request):
         if request.method == 'POST':
             # context = user authenticate
             form = RegisterForm(request.POST)
-            storage = get_messages(request)
             if form.is_valid():
                 user = User(email=form.cleaned_data['email'],password=form.cleaned_data['password'])
                 print(user)
@@ -62,5 +66,5 @@ def add_shoes(request):
             except:
                 print("error")
         else:
-            print("lol")
+            print("error")
     return render(request,'blog/shoes.html', {'form':form})

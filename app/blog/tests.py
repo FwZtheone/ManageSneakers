@@ -7,7 +7,6 @@ from .models import Shoes
 
 class UserTestCase(TestCase):
     def setUp(self):
-        
         user1 = User(email="admin@gmail.com")
         user1.is_staff = True
         user1.is_superuser = True

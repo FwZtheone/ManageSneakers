@@ -35,7 +35,7 @@ class UserManager(BaseUserManager):
             raise ValueError('Superuser must have is_superuser=True.')
 
         return self._create_user(email, password, **extra_fields)
-        
+
 
 class User(AbstractUser):
     """user name model"""
@@ -52,7 +52,7 @@ class Shoes(models.Model):
     color = models.CharField(max_length=255)
     price = models.FloatField()
     price_bought = models.FloatField()
-    price_selled = models.FloatField() 
+    price_selled = models.FloatField()
     date_received = models.DateTimeField()
     date_selled = models.DateTimeField()
     quantity = models.IntegerField()
