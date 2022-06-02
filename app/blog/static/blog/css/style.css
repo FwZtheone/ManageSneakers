@@ -1,3 +1,7 @@
+*,html{
+    box-sizing: border-box;
+}
+
 @media only screen and (min-width: 1500px){
 
     .customer-container{
@@ -10,7 +14,6 @@
     margin-top:1em;
 }
 
-.custom-footer{
-    background-color: red;
+.container-home{
+    height: 100vh;
 }
-
